@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react'
 
 class TodoListItem extends Component {
   constructor(props) {
-    super(props);
+    super(props)
 
     this.state = {
         isEditing: false
@@ -18,11 +18,11 @@ class TodoListItem extends Component {
           defaultValue={this.props.task}
           onBlur={this.onBlur.bind(this)}
           onKeyDown={this.onKeyDown.bind(this)}>
-        </input>);
+        </input>)
     }
 
     const style = {
-      textDecoration: this.props.completed ? "line-through" : "",
+      textDecoration: this.props.completed ? "line-through" : "none",
     }
     return (
       <label 
@@ -30,7 +30,7 @@ class TodoListItem extends Component {
         onDoubleClick={this.onTodoDoubleClick.bind(this)}>
         {this.props.task}
       </label>
-    );
+    )
   }
 
   renderCheckBox() {
@@ -39,27 +39,27 @@ class TodoListItem extends Component {
         type="checkbox"
         checked={this.props.completed}
         onChange={this.onCheckboxClicked.bind(this)} />
-    );
+    )
   }
 
   onDelete(event) {
-    this.props.deleteTodo(this.props.task)
+    this.props.onDeleteTodo(this.props.id)
   }
 
   onKeyDown(event) {
     if (event.key === 'Enter') {
-      this.props.updateTodo(this.props.task, event.target.value)
-      this.setState({isEditing: false});
+      this.props.onUpdateTodo(this.props.id, event.target.value)
+      this.setState({isEditing: false})
     }
   }
 
   onBlur(event) {
-    this.props.updateTodo(this.props.task, event.target.value)
-    this.setState({isEditing: false});
+    this.props.onUpdateTodo(this.props.id, event.target.value)
+    this.setState({isEditing: false})
   }
 
   onCheckboxClicked(event) {
-    this.props.toggleTodo(this.props.task);
+    this.props.onToggleTodo(this.props.id)
   }
 
   onTodoDoubleClick(event) {
@@ -70,13 +70,22 @@ class TodoListItem extends Component {
 
   render() {
     return (
-      <div>
+      <li>
         {this.renderCheckBox()}
         {this.renderTodo()}
         <button onClick={this.onDelete.bind(this)}>X</button>
-      </div>
-    );
+      </li>
+    )
   }
-
 }
-export default TodoListItem;
+
+TodoListItem.propTypes = {
+  id: PropTypes.number.isRequired,
+  completed: PropTypes.bool.isRequired,
+  task: PropTypes.string.isRequired,
+  onToggleTodo: PropTypes.func.isRequired,
+  onUpdateTodo: PropTypes.func.isRequired,
+  onDeleteTodo: PropTypes.func.isRequired,
+}
+
+export default TodoListItem
