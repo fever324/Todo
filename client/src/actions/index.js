@@ -1,10 +1,10 @@
 import { ADD_TODO, TOGGLE_TODO, DELETE_TODO, UPDATE_TODO, SET_VISIBILITY_FILTERS } from './actionTypes.js'
+import { generateUUID } from '../utils/utils'
 
-let nextTodoId = 0;
-
-export function addTodo(task, isRemote=false) {
+export function addTodo(task, serverId=null, isRemote=false) {
+  let id = serverId == null ? generateUUID() : serverId
   return {
-    id: nextTodoId++,
+    id,
     type: ADD_TODO,
     task,
     isRemote

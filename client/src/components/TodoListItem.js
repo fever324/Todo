@@ -80,7 +80,7 @@ class TodoListItem extends Component {
 }
 
 TodoListItem.propTypes = {
-  id: PropTypes.number.isRequired,
+  id: PropTypes.string.isRequired,
   completed: PropTypes.bool.isRequired,
   task: PropTypes.string.isRequired,
   onToggleTodo: PropTypes.func.isRequired,

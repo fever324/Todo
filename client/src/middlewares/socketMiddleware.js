@@ -9,7 +9,7 @@ export function socketMiddleware(store) {
     const result = next(action);
 
     if (socket && !action.isRemote && action.type !== SET_VISIBILITY_FILTERS) {
-        socket.emit('REMOTE_ACTION', action)
+      socket.emit('REMOTE_ACTION', action)
     }
     return result;
   };
@@ -21,7 +21,7 @@ export function connectToServer (store) {
   socket.on('REMOTE_ACTION', action => {
     switch(action.type){
       case ADD_TODO:
-        return store.dispatch(actions.addTodo(action.task, true));
+        return store.dispatch(actions.addTodo(action.task, action.id, true));
       case DELETE_TODO:
         return store.dispatch(actions.deleteTodo(action.id, true));
       case UPDATE_TODO:
