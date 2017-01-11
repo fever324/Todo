@@ -2,33 +2,37 @@ import { ADD_TODO, TOGGLE_TODO, DELETE_TODO, UPDATE_TODO, SET_VISIBILITY_FILTERS
 
 let nextTodoId = 0;
 
-export function addTodo(task) {
+export function addTodo(task, isRemote=false) {
   return {
     id: nextTodoId++,
     type: ADD_TODO,
-    task
+    task,
+    isRemote
   }
 }
 
-export function toggleTodo(id) {
+export function toggleTodo(id, isRemote=false) {
   return {
     type: TOGGLE_TODO,
-    id
+    id,
+    isRemote
   }
 }
 
-export function updateTodo(id, task) {
+export function updateTodo(id, task, isRemote=false) {
   return {
     type: UPDATE_TODO,
     id,
-    task
+    task,
+    isRemote
   }
 }
 
-export function deleteTodo(id) {
+export function deleteTodo(id, isRemote=false) {
   return {
     type: DELETE_TODO,
-    id
+    id,
+    isRemote
   }
 }
 

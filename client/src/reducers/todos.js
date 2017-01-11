@@ -14,15 +14,13 @@ const todo = function(state = {}, action) {
       if (state.id !== action.id) {
         return state;
       }
-      state.completed = !state.completed
-      return state
+      return Object.assign({}, state, {completed: !state.completed})
 
     case UPDATE_TODO:
       if (state.id !== action.id) {
         return state
       }
-      state.task = action.task
-      return state
+      return Object.assign({}, state, {task: action.task})
 
     default:
       return state
