@@ -49,13 +49,39 @@ function syncWithDatabase(action) {
   switch(action.type) {
     case 'ADD_TODO':
       addTodo(action)
-
-
+      break
+    case 'UPDATE_TODO':
+      updateTodo(action)
+      break
+    case 'TOGGLE_TODO':
+      toggleTodo(action)
+      break
+    case 'DELETE_TODO':
+      deleteTodo(action);
   }
 }
 
 function addTodo(action) {
-  var newTodo = new Todo({task: action.task, id: action.id, isCompleted: false})
+  var newTodo = new Todo({task: action.task, id: action.id, completed: false})
   newTodo.save()
+}
+
+function updateTodo(action) {
+  Todo.findOneAndUpdate({id:action.id}, action, {upsert: true}, function(err) {
+    if(err) console.log(err)
+  })
+}
+
+function toggleTodo(action) {
+  Todo.findOne({id:action.id}, function(err, todo) {
+    todo['completed'] = !todo['completed']
+    todo.save()
+  })
+}
+
+function deleteTodo(action) {
+  Todo.find({id:action.id}).remove().exec(function(err) {
+    if(err) console.log(err)
+  })
 }
 
