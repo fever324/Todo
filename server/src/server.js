@@ -34,6 +34,10 @@ io.on('connection', (socket) => {
     syncWithDatabase(action)
   });
 
+  socket.on('INITIAL_LOAD_ACTION', () => {
+    getAllTodo(socket)
+  });
+
   socket.on('disconnect', () => {
     console.log("bye")
   });
@@ -59,6 +63,12 @@ function syncWithDatabase(action) {
     case 'DELETE_TODO':
       deleteTodo(action);
   }
+}
+
+function getAllTodo(socket) {
+  Todo.find({}, function(err, todos){
+    socket.emit('ADD_TODOS', todos)
+  });
 }
 
 function addTodo(action) {

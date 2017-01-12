@@ -1,4 +1,4 @@
-import { ADD_TODO, TOGGLE_TODO, DELETE_TODO, UPDATE_TODO, SET_VISIBILITY_FILTERS } from './actionTypes.js'
+import { ADD_TODO, ADD_TODOS, TOGGLE_TODO, DELETE_TODO, UPDATE_TODO, SET_VISIBILITY_FILTERS } from './actionTypes.js'
 import { generateUUID } from '../utils/utils'
 
 export function addTodo(task, serverId=null, isRemote=false) {
@@ -7,6 +7,14 @@ export function addTodo(task, serverId=null, isRemote=false) {
     id,
     type: ADD_TODO,
     task,
+    isRemote
+  }
+}
+
+export function addTodos(todos, isRemote=false) {
+  return {
+    type: ADD_TODOS,
+    todos, 
     isRemote
   }
 }

@@ -1,4 +1,4 @@
-import { ADD_TODO, TOGGLE_TODO, DELETE_TODO, UPDATE_TODO } from '../actions/actionTypes'
+import { ADD_TODO, ADD_TODOS, TOGGLE_TODO, DELETE_TODO, UPDATE_TODO } from '../actions/actionTypes'
 import _ from 'lodash';
 
 const todo = function(state = {}, action) {
@@ -7,7 +7,7 @@ const todo = function(state = {}, action) {
       return {
         id: action.id,
         task: action.task,
-        completed: false
+        completed: action.completed == null ? false : action.completed
       }
 
     case TOGGLE_TODO:
@@ -33,6 +33,21 @@ const todos = (state = [], action) => {
       return [
         ...state,
         todo(undefined, action)
+      ]
+      
+    case ADD_TODOS: 
+      let newTodos = action.todos.map( 
+        t => {  
+          return {
+            id: t.id,
+            task: t.task,
+            completed: t.completed
+          }
+        }
+      )
+      return [
+        ...state,
+        ...newTodos
       ]
 
     case TOGGLE_TODO:
