@@ -44,6 +44,10 @@ html, body, ul{
   color: orange;
 }
 
+[class*="col-"] {
+    width: 100%;
+}
+
 .todo-list-item {
   list-style-type: none;
   margin-top: 15px;
@@ -74,4 +78,11 @@ html, body, ul{
   background: orange;
   border: none;
   color: white;
+}
+
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    [class=todo-list-item] {
+        width: 90%;
+    }
 }
