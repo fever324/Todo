@@ -27,7 +27,7 @@ class TodoListItem extends Component {
     return (
       <label 
         style={style} 
-        onDoubleClick={this.onTodoDoubleClick.bind(this)}>
+        onClick={this.onClick.bind(this)}>
         {this.props.task}
       </label>
     )
@@ -40,6 +40,18 @@ class TodoListItem extends Component {
         checked={this.props.completed}
         onChange={this.onCheckboxClicked.bind(this)} />
     )
+  }
+
+  onClick() {
+    var delta = new Date().getTime() - this.state.lastPress;
+    if(delta < 200) {
+      this.setState({
+        isEditing: true,
+      })
+    }
+    this.setState({
+      lastPress: new Date().getTime()
+    })
   }
 
   onDelete(event) {
@@ -60,12 +72,6 @@ class TodoListItem extends Component {
 
   onCheckboxClicked(event) {
     this.props.onToggleTodo(this.props.id)
-  }
-
-  onTodoDoubleClick(event) {
-    this.setState({
-      isEditing: true,
-    })
   }
 
   render() {
