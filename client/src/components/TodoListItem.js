@@ -13,6 +13,7 @@ class TodoListItem extends Component {
     if (this.state.isEditing) {
       return ( 
         <input 
+          className="todo-editbox"
           ref="editField" 
           type="text" 
           defaultValue={this.props.task}
@@ -36,6 +37,7 @@ class TodoListItem extends Component {
   renderCheckBox() {
     return (
       <input 
+        class="todo-checkbox"
         type="checkbox"
         checked={this.props.completed}
         onChange={this.onCheckboxClicked.bind(this)} />
@@ -76,10 +78,10 @@ class TodoListItem extends Component {
 
   render() {
     return (
-      <li>
+      <li className="todo-list-item">
         {this.renderCheckBox()}
         {this.renderTodo()}
-        <button onClick={this.onDelete.bind(this)}>X</button>
+        <button className="todo-removebtn glyphicon glyphicon-remove" onClick={this.onDelete.bind(this)}/>
       </li>
     )
   }

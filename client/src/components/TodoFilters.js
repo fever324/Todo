@@ -4,7 +4,8 @@ import { VisibilityFilters } from '../actions/actionTypes'
 
 class TodoFilters extends Component {
   render() {
-   return( <p>Show: 
+   return( 
+    <p> 
       <FilterLink filter={VisibilityFilters.SHOW_ALL}>All</FilterLink>
       {" | "}
       <FilterLink filter={VisibilityFilters.SHOW_COMPLETED}>Completed</FilterLink>

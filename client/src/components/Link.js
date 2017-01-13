@@ -3,10 +3,15 @@ import React, { Component, PropTypes } from 'react'
 class Link extends Component {
   render() {
     if (this.props.active) {
-      return <span>{this.props.children}</span>
+      return <span
+        className="filterLink filterLink-inactive">
+          {this.props.children}
+        </span>
     }
     return (
-      <a href="#"
+      <a
+        className="filterLink filterLink-active" 
+        href="#"
         onClick={ e => {
           this.props.onClick()
         }}>

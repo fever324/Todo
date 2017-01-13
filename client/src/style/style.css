@@ -1,0 +1,77 @@
+html, body, ul{
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: Avenir-Light;
+  background: #494141;
+  text-align: center;
+}
+
+.header {
+  font-size: 35px;
+  color: #FFFFFF;   
+}
+
+.inputBox  {
+  border-radius: 39px;
+  width: 80%;
+  height: 40px;
+  font-size: 25px;
+  text-align: center;
+  margin-bottom: 25px;
+  color: darkgrey;
+}
+
+.filterLink {
+  margin-left: 10px;
+  margin-right: 10px;
+  font-size: 25px;
+}
+
+.filterLink-active {
+  color: orange;
+  text-decoration: none;
+}
+.filterLink-active:hover {
+  color: lightgreen;
+}
+
+.filterLink-inactive {
+  color: white;
+}
+
+.todo-editbox {
+  color: orange;
+}
+
+.todo-list-item {
+  list-style-type: none;
+  margin-top: 15px;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  color: white;
+  font-size: 25px;
+  border-bottom-color: white;
+  border-bottom-style: solid;
+  border-width: 1px;
+  padding-bottom: 10px;
+}
+
+.todo-checkbox{
+  width: 10%;
+}
+
+.todo-removebtn{
+  width: 40px;
+  height: 40px;
+  font-size: 18px;
+  line-height: 1.33;
+  border-radius: 25px;
+  background: orange;
+  border: none;
+  color: white;
+}

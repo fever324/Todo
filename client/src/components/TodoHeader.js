@@ -1,11 +1,10 @@
 import React, { Component, PropTypes } from 'react'
-
 class TodoHeader extends Component {
   render() {
     return (
       <div>
-        <h1>HF's To Do </h1>
-        <input type="text" placeholder="what to do?" onKeyPress={this.handleKeyPress.bind(this)}></input>
+        <h1 className="header">HF's To Do </h1>
+        <input className="inputBox" type="text" placeholder="What?" onKeyPress={this.handleKeyPress.bind(this)}></input>
       </div>
     )
   }
