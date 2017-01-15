@@ -26,18 +26,17 @@ html, body, ul{
   margin-left: 10px;
   margin-right: 10px;
   font-size: 25px;
-}
-
-.filterLink-active {
   color: orange;
   text-decoration: none;
 }
-.filterLink-active:hover {
-  color: lightgreen;
+
+.filterLink-active {
+  color: white;
+  pointer-events:none;
 }
 
-.filterLink-inactive {
-  color: white;
+.filterLink:hover {
+  color: lightgreen;
 }
 
 .todo-editbox {

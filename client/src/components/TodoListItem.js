@@ -37,7 +37,7 @@ class TodoListItem extends Component {
   renderCheckBox() {
     return (
       <input 
-        class="todo-checkbox"
+        className="todo-checkbox"
         type="checkbox"
         checked={this.props.completed}
         onChange={this.onCheckboxClicked.bind(this)} />
