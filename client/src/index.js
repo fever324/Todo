@@ -6,9 +6,10 @@ import { Router, Route, browserHistory } from 'react-router'
 import todoApp from './reducers'
 import App from './components/App'
 import { socketMiddleware, connectToServer } from './middlewares/socketMiddleware'
+import logger from './middlewares/logger'
 
-const createStoreWithMiddleware = applyMiddleware(socketMiddleware)(createStore)
-const store = createStoreWithMiddleware(todoApp)
+const middlewares = applyMiddleware(socketMiddleware, logger)
+const store = createStore(todoApp, middlewares)
 
 connectToServer(store)
 
